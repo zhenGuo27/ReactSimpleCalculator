@@ -31,3 +31,71 @@
     transform: rotate(360deg);
   }
 }
+
+/*******************************************/
+
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 767px) {
+  html {
+      font-size: 10px;
+  }
+}
+
+.calcWrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 3rem;
+  color: white;
+  background-color: #282c34;
+}
+
+.calc {
+  width: 100%;
+  /*max-width: 500px;*/
+  margin: 0 auto;
+  display: -webkit-flex; /* Safari */
+  -webkit-justify-content: flex-start; /* Safari 6.1+ */
+  display: flex;
+  justify-content: flex-start;
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  flex-wrap: wrap;
+}
+
+.calcItem {
+  width: 25%;
+  height: 25vw;
+  font-size: 3rem;
+  max-height: 125px;
+  display: -webkit-flex; /* Safari */
+  -webkit-justify-content: center; /* Safari 6.1+ */
+  display: flex;
+  justify-content: center;
+  -webkit-align-items: center; /* Safari 7.0+ */
+  align-items: center;
+}
+
+.operatorItem {
+  width: 25%;
+  height: 25vw;
+  font-size: 3rem;
+  max-height: 125px;
+  display: -webkit-flex; /* Safari */
+  -webkit-justify-content: center; /* Safari 6.1+ */
+  display: flex;
+  justify-content: center;
+  -webkit-align-items: center; /* Safari 7.0+ */
+  align-items: center;
+}
+
+.resultBlock {
+  border-bottom: 1px white solid;
+  padding-left: 3rem;
+}
+
+.resultBlock > div:nth-child(1) {
+  font-size: 0.8em;
+}
