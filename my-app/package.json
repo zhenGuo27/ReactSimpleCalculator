@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zhenGuo27.github.io/React_Test",
+  "homepage": "https://zhenGuo27.github.io/ReactSimpleCalculator",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
