@@ -1,13 +1,13 @@
 {
-  "main.css": "/React_Test/static/css/main.10167e30.chunk.css",
-  "main.js": "/React_Test/static/js/main.b85c5b24.chunk.js",
-  "main.js.map": "/React_Test/static/js/main.b85c5b24.chunk.js.map",
-  "runtime~main.js": "/React_Test/static/js/runtime~main.e47b620c.js",
-  "runtime~main.js.map": "/React_Test/static/js/runtime~main.e47b620c.js.map",
-  "static/js/2.65aa1cca.chunk.js": "/React_Test/static/js/2.65aa1cca.chunk.js",
-  "static/js/2.65aa1cca.chunk.js.map": "/React_Test/static/js/2.65aa1cca.chunk.js.map",
-  "index.html": "/React_Test/index.html",
-  "precache-manifest.2b76b1b1a8910f97de48a26c432878d5.js": "/React_Test/precache-manifest.2b76b1b1a8910f97de48a26c432878d5.js",
-  "service-worker.js": "/React_Test/service-worker.js",
-  "static/css/main.10167e30.chunk.css.map": "/React_Test/static/css/main.10167e30.chunk.css.map"
+  "main.css": "/ReactSimpleCalculator/static/css/main.10167e30.chunk.css",
+  "main.js": "/ReactSimpleCalculator/static/js/main.8f768aeb.chunk.js",
+  "main.js.map": "/ReactSimpleCalculator/static/js/main.8f768aeb.chunk.js.map",
+  "runtime~main.js": "/ReactSimpleCalculator/static/js/runtime~main.ede41ce2.js",
+  "runtime~main.js.map": "/ReactSimpleCalculator/static/js/runtime~main.ede41ce2.js.map",
+  "static/js/2.65aa1cca.chunk.js": "/ReactSimpleCalculator/static/js/2.65aa1cca.chunk.js",
+  "static/js/2.65aa1cca.chunk.js.map": "/ReactSimpleCalculator/static/js/2.65aa1cca.chunk.js.map",
+  "index.html": "/ReactSimpleCalculator/index.html",
+  "precache-manifest.13ee41e02d620ef8cb3014f62b24bc1c.js": "/ReactSimpleCalculator/precache-manifest.13ee41e02d620ef8cb3014f62b24bc1c.js",
+  "service-worker.js": "/ReactSimpleCalculator/service-worker.js",
+  "static/css/main.10167e30.chunk.css.map": "/ReactSimpleCalculator/static/css/main.10167e30.chunk.css.map"
 }
