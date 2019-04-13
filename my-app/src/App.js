@@ -26,6 +26,8 @@ class App extends Component {
       cal.push(input);
       str = "";
     } else if(input === "=") {
+      if(cal.length == 0) return;
+      
       cal.push(str);
       str = "";
       this.calculate();
@@ -62,7 +64,7 @@ class App extends Component {
   }
 
   calculate() {
-    //debugger;
+    debugger;
 
     for(let c=0; c < cal.length; c++) {
       let temp = [];
