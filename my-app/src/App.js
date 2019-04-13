@@ -5,146 +5,96 @@ import './App.css';
 
 let str = "";
 const numbers = [1, 2, 3, "+", 4, 5, 6, "-", 7, 8, 9, "×", "C", 0 , "=", "÷"];
-
+let cal = [];
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       record: "",
-      current: 0,
-      isAfterOper: false
+      current: 0
     };
   }
 
   getInput(input) {
-    //debugger;
-    str+=input;
-    console.log(str);
-
     if(input === "C") {
       this.clear();
       return;
     }
 
-    if(input === "=") {
+    if(this.isOperatorPlusOrMinus(input)) {
+      cal.push(str);
+      cal.push(input);
+      str = "";
+    } else if(input === "=") {
+      cal.push(str);
+      str = "";
       this.calculate();
       return;
+    } else {
+      str+= input;
     }
 
-    if(this.isOperator(input)){
-      this.setState({record: str});
-      this.setState({isAfterOper: true});
-    } else {
-      let temp = (this.state.current === 0 || this.state.isAfterOper) ? input: this.state.current + input;
-      this.setState({current: temp});
-      this.setState({isAfterOper: false});
-    }
+    this.setState({record: cal.join("")});
+    this.setState({current: str});
   }
 
   add(a, b) {
-    return a + b;
+    return parseInt(a, 10) + parseInt(b, 10);
   }
 
   minus(a, b) {
-    return a - b;
+    return parseInt(a, 10) - parseInt(b, 10);
   }
 
   multiply(a, b) {
-    return a * b;
+    return parseInt(a, 10) * parseInt(b, 10);
   }
 
   divided(a, b) {
-    return a / b;
+    return parseInt(a, 10) / parseInt(b, 10);
   }
 
   clear() {
     str = "";
+    cal = [];
     this.setState({record: str});
-    this.setState({isAfterOper: false});
     this.setState({current: 0});
   }
 
   calculate() {
-    debugger;
+    //debugger;
 
-    str = str.replace("=", "");
-    let split = str.split("+");
-    this.insertOper("+", split, 0, split.length);
+    for(let c=0; c < cal.length; c++) {
+      let temp = [];
+      if(this.isOperatorPlusOrMinus(cal[c])) continue;
 
-    for(let j=1; j<split.length; j++) {
-      if(split[j].indexOf("-")!==-1 && split[j].length > 1) {
-        let t = split[j];
-        let sp = t.split("-");
-        for(let m=0; m < sp.length; m++) {
-          split[j+m] = sp[m];
-        }
-        this.insertOper("-", split, j, sp.length);
-      } 
-      
-      /*if(split[j].indexOf("×")!==-1) {
-        let temp = split[j].split("×");
-        split[j] = this.multiply(temp[0], temp[1]).toString();
-      } 
-      
-      if(split[j].indexOf("÷")!==-1) {
-        let temp2 = split[j].split("÷");
-        split[j] = this.divided(temp2[0], temp2[1]).toString();
-      }*/
-
-      split[j] = this.splitOper("×", split[j]);
-      split[j] = this.splitOper("÷", split[j]);
-    }
-
-    let b = 0;
-    let oper = "";
-    let sum=split[0];
-    for(let r=1; r < split.length; r++) {
-      if(this.isOperator(split[r])) {
-        oper = split[r];
-      } else if(b === 0) {
-        b = split[r];
-        sum = this.switchOper(oper, parseInt(sum, 10), parseInt(b, 10));
-        b = 0;
-        oper = "";
-      } 
-    }
-
-    str = "";
-    this.setState({current: sum});
-    this.setState({record: str});
-  }
-
-  splitOper(target, item) {
-    let temp = [];
-    if(item.indexOf(target)!==-1) {
-      temp = item.split(target);
-      if(target === "×") {
-        item = this.multiply(temp[0], temp[1]).toString();
-      } else {
-        item = this.divided(temp[0], temp[1]).toString();
+      if(cal[c].indexOf("×")!=-1) {
+        temp = cal[c].split("×");
+        cal[c] = this.multiply(temp[0], temp[1]);
+      } else if(cal[c].indexOf("÷")!=-1) {
+        temp = cal[c].split("÷");
+        cal[c] = this.divided(temp[0], temp[1]);
       }
-    } 
-    return item;
-  }
-
-  insertOper(oper, array, index, len) {
-    for(let i=1; i < len; i+=2) {
-      array.splice(i+index, 0, oper);
     }
-    return array;
+
+    let sum = 0;
+    for(let s=0; s< cal.length; s++) {
+      if(cal[s] === "+") {
+        cal[s+1] = this.add(cal[s-1], cal[s+1]);
+      } else if(cal[s] === "-") {
+        cal[s+1] = this.minus(cal[s-1], cal[s+1]); 
+      }
+    }
+    sum = cal[cal.length-1];
+
+    this.setState({record: ""});
+    this.setState({current: sum});
+    str = "";
+    cal = [];
   }
 
-  switchOper(oper, a, b) {
-    let r = 0;
-    if(oper === "+") { r = this.add(a, b); }
-    if(oper === "-") { r = this.minus(a, b); }
-    if(oper === "×") { r = this.multiply(a, b); }
-    if(oper === "÷") { r = this.divided(a, b); } 
-    return r;
-  }
-
-  isOperator(str) {
-    if(str === "+" || str === "-" || str === "×" || str === "÷") {
+  isOperatorPlusOrMinus(str) {
+    if(str === "+" || str === "-") {
       return true;
     }
     return false;
