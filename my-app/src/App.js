@@ -26,12 +26,14 @@ class App extends Component {
       cal.push(input);
       str = "";
     } else if(input === "=") {
-      if(cal.length == 0) return;
+      if(str.length == 0) return;
       
       cal.push(str);
       str = "";
       this.calculate();
       return;
+    } else if(str === "0") {
+      str = input;
     } else {
       str+= input;
     }
