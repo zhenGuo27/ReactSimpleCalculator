@@ -93,7 +93,7 @@ class App extends Component {
 
     this.setState({record: ""});
     this.setState({current: sum});
-    str = "";
+    str = sum.toString();
     cal = [];
   }
 
