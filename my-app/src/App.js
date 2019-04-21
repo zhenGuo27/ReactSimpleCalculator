@@ -66,8 +66,6 @@ class App extends Component {
   }
 
   calculate() {
-    debugger;
-
     for(let c=0; c < cal.length; c++) {
       let temp = [];
       if(this.isOperatorPlusOrMinus(cal[c])) continue;
